@@ -28,3 +28,10 @@ class DetalleComanda(models.Model):
 
     def __str__(self):
         return f"{self.cantidad}x {self.plato.nombre} en Comanda {self.comanda.id}"
+
+class HistorialComanda(models.Model):
+    comanda = models.ForeignKey(Comanda, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comanda {self.comanda.id} - {self.fecha}"
